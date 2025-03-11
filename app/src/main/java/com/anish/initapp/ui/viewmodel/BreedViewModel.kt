@@ -20,7 +20,7 @@ class BreedViewModel @Inject constructor(private val repository: CatRepository) 
         fetchBreeds()
     }
 
-    fun fetchBreeds(limit: Int = 10) {
+    fun fetchBreeds(limit: Int = 20) {
         viewModelScope.launch {
             _breeds.value = repository.getBreeds(limit)
         }

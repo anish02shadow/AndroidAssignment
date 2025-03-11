@@ -1,12 +1,14 @@
 package com.anish.initapp.ui.view.activity
 
 import android.os.Bundle
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.anish.initapp.R
 import com.anish.initapp.databinding.ActivityMainBinding
+import com.anish.initapp.ui.view.fragment.BreedListFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -27,11 +29,26 @@ class MainActivity : AppCompatActivity() {
         // Setup bottom navigation with NavController
         binding.bottomNavigation.setupWithNavController(navController)
 
-        supportActionBar?.hide()
+        // Enable the up button in the default Action Bar.
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.title = "CatInfo"
+
     }
 
     override fun onSupportNavigateUp(): Boolean {
         return navController.navigateUp() || super.onSupportNavigateUp()
+    }
+
+    // Handle the up button press
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                // This is triggered when the up/back button is pressed.
+                onBackPressed()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 
 }
