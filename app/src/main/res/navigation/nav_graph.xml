@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:startDestination="@id/breedListFragment">
+
+    <fragment
+        android:id="@+id/breedListFragment"
+        android:name="com.anish.initapp.ui.view.fragment.BreedListFragment"
+        android:label="Cat Breeds">
+        <action
+            android:id="@+id/action_breedListFragment_to_breedDetailFragment"
+            app:destination="@id/breedDetailFragment" />
+        <!-- Optionally add action to FactListFragment if using a tab or menu -->
+    </fragment>
+
+    <fragment
+        android:id="@+id/breedDetailFragment"
+        android:name="com.anish.initapp.ui.view.fragment.BreedDetailFragment"
+        android:label="Breed Detail">
+        <argument
+            android:name="breed"
+            app:argType="com.anish.initapp.data.model.Breed" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/factListFragment"
+        android:name="com.anish.initapp.ui.view.fragment.FactListFragment"
+        android:label="Cat Facts">
+        <action
+            android:id="@+id/action_factListFragment_to_factDetailFragment"
+            app:destination="@id/factDetailFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/factDetailFragment"
+        android:name="com.anish.initapp.ui.view.fragment.FactDetailFragment"
+        android:label="Fact Detail">
+        <argument
+            android:name="fact"
+            app:argType="com.anish.initapp.data.model.Fact" />
+    </fragment>
+</navigation>
